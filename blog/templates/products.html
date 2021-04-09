@@ -4,7 +4,9 @@
         <link rel="stylesheet" href="{% static 'main.css' %}" >
     </head>
     <body>
-        <a href="#">{{ product1 }}</a>
-       <a href="#">{{ product2 }}</a>
+        {% for product in products %}
+            <a href="#">{{ product.name }}</a>
+        <a href="#">{{ product.model }}</a>
+        {% endfor %}
     </body>
 </html>

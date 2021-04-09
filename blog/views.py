@@ -1,19 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Product
 
 def display(request):
     return render(request,'main.html')
 
 def mobile(request):
-    mobiles = {
-        'product1': 'apple',
-        'product2': 'samsung'
-    }
-    return render(request,'products.html', context=mobiles)
+    products = Product.objects.filter(category = 1)
+    return render(request,'products.html', {'products' : products})
 
 def laptop(request):
-    laptops = {
-        'product1': 'asus',
-        'product2': 'hp'
-    }
-    return render(request,'products.html', context=laptops)
+    products = Product.objects.filter(category = 2)
+    return render(request,'products.html', {'products' : products})
