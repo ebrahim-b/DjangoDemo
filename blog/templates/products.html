@@ -4,9 +4,28 @@
         <link rel="stylesheet" href="{% static 'main.css' %}" >
     </head>
     <body>
-        {% for product in products %}
-            <a href="#">{{ product.name }}</a>
-        <a href="#">{{ product.model }}</a>
-        {% endfor %}
+        {% if products %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Model</th>
+                </tr>
+            </thead>
+            {% for product in products %}
+                <tr>
+                    <td>
+                        <a href="#">{{ product.name }}</a>
+                    </td>
+
+                    <td>
+                        <a href="#">{{ product.model }}</a>
+                    </td>
+                </tr>                
+            </table>
+            {% endfor %}
+        {% else %}
+            <p>Not Found</p>
+        {% endif %}
     </body>
 </html>
