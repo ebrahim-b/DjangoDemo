@@ -16,4 +16,10 @@ def laptop(request):
 
 def productform(request):
     form = Product_Form
+
+    if request.method == 'POST':
+        form = Product_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return display(request)
     return render(request,'form.html', {'form':form})
