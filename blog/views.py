@@ -30,3 +30,15 @@ def deleteModel(request, id):
     product.delete()
 
     return redirect('/')
+
+def updateModel(request, id):
+    product = Product.objects.get(id=id)
+
+    form = Product_Form(instance = product)
+
+    if request.method == 'POST':
+        form = Product_Form(request.POST, instance = product)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request,'form.html', {'form':form})
