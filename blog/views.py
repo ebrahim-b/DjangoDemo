@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Product
 from .forms import ProductForm, Product_Form
@@ -23,3 +23,10 @@ def productform(request):
             form.save()
             return display(request)
     return render(request,'form.html', {'form':form})
+
+
+def deleteModel(request, id):
+    product = Product.objects.get(id=id)
+    product.delete()
+
+    return redirect('/')
