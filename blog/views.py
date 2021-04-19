@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Product
-from .forms import ProductForm
+from .forms import ProductForm, Product_Form
 
 def display(request):
     return render(request,'main.html')
@@ -15,5 +15,5 @@ def laptop(request):
     return render(request,'products.html', {'products' : products})
 
 def productform(request):
-    form = ProductForm()
+    form = Product_Form
     return render(request,'form.html', {'form':form})
